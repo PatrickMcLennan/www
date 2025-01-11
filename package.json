@@ -1,0 +1,20 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build:typescipt:dev": "tsc ./src/index.ts --outDir ./dist -b",
+    "build:scss:dev": "sass -w ./src/styles/styles.scss ./dist/styles.css",
+    "build:pug:dev": "pug src/ --out dist/ --pretty",
+    "watch": "concurrently \"tsc ./src/index.ts --outDir ./dist -w\" \"sass -w ./src/styles/styles.scss ./dist/styles.css\" \"pug -w src/ --out dist/\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6",
+    "reset-css": "^5.0.2",
+    "sass": "^1.83.1",
+    "typescript": "^5.7.2"
+  }
+}
