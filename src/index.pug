@@ -6,7 +6,7 @@ html(lang="en")
     
     title Patrick McLennan | Software Developer
     meta(name="description" content="Full stack software developer with a passion for creating efficient, scalable, and user-friendly web applications.")
-    meta(name="keywords" content="software developer, web development, rust, typescript, ruby on rails, react, next.js, tailwind, docker, kubernetes, aws, azure, gcp")
+    meta(name="keywords" content="software developer, web development, rust, typescript, ruby on rails, react, Node.js, tailwind, docker, kubernetes, aws, azure, gcp")
     meta(name="author" content="Patrick McLennan")
     
     link(rel="icon" type="image/x-icon" href="/favicon.ico")
@@ -34,11 +34,7 @@ html(lang="en")
     
   body
     header.header
-      span.logo
-        b Patrick
-        |  M
-        sup c
-        | Lennan
+      include partials/logo.pug
     
     main
       section.hero
@@ -50,24 +46,6 @@ html(lang="en")
             |  to build 
             span.verb performant
             |  software.
-        .hero-card.card(aria-label="Technologies" role="region")
-          article#content-1.content(
-            aria-labelledby="TypeScript Rust Ruby-on-Rails React Next.js Docker AWS GCP PostgreSQL MySQL DynamoDB Redis ElasticSearch Grafana GraphQL"
-          )
-          .button-group(role="tablist")
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="TypeScript") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="Rust") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="Ruby-on-Rails") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="React") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="Next.js") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="Docker") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="AWS") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="GCP") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="PostgreSQL") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="MySQL") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="DynamoDB") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="Redis") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="ElasticSearch") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="Grafana") 👋
-            button(role="tab" aria-selected="false" aria-controls="content-1" id="GraphQL") 👋
-    
+        include partials/hero-card.pug
+      //- include partials/about-me.pug
+          

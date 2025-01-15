@@ -1,0 +1,79 @@
+-
+    const technologies = [
+        'TypeScript',
+        'Ruby-on-Rails',
+        'Kafka',
+        'React',
+        'PostgreSQL',
+        'Docker',
+        'Redis',
+        'AWS',
+        'GCP',
+        'Rust',
+        'MySQL',
+        'DynamoDB',
+        'ElasticSearch',
+        'Node.js',
+        'Grafana',
+        'GraphQL'
+    ].sort(() => Math.random() - 0.5)
+
+mixin includeTech(tech)
+    case tech
+        when 'TypeScript'
+            include ./TypeScript.pug
+        when 'Rust'
+            include ./Rust.pug
+        when 'Kafka'
+            include ./Kafka.pug
+        when 'Ruby-on-Rails'
+            include ./Ruby-on-Rails.pug
+        when 'React'
+            include ./React.pug
+        when 'Node.js'
+            include ./Node-js.pug
+        when 'Docker'
+            include ./Docker.pug
+        when 'AWS'
+            include ./AWS.pug
+        when 'GCP'
+            include ./GCP.pug
+        when 'PostgreSQL'
+            include ./PostgreSQL.pug
+        when 'MySQL'
+            include ./MySQL.pug
+        when 'DynamoDB'
+            include ./DynamoDB.pug
+        when 'Redis'
+            include ./Redis.pug
+        when 'ElasticSearch'
+            include ./ElasticSearch.pug
+        when 'Grafana'
+            include ./Grafana.pug
+        when 'GraphQL'
+            include ./GraphQL.pug
+
+.hero-card.card(aria-label="Technologies" role="region")
+    article#content-1.content(
+        aria-labelledby=technologies.join(' ')
+    )
+        //- .icon
+        //-     each tech in technologies
+        //-         span(data-tech=tech, aria-hidden="true")
+        //-             +includeTech(tech)
+        //- .description
+        //-     each tech in technologies
+        //-         h3(data-tech=tech, aria-hidden="true")=tech
+        //- .used-at
+        //-     include ./shopify.pug
+        //-     include ./slalom_build.pug
+        
+    .button-group(role="tablist")
+        each tech in technologies
+            button(
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="content-1"
+                id=tech
+            )
+                +includeTech(tech)

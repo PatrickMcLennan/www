@@ -5,6 +5,7 @@
 
 button {
     cursor: pointer;
+    border: none;
 }
 
 // Fonts
@@ -23,61 +24,6 @@ button {
   font-weight: bold;
   font-style: normal;
 }
-
-// @keyframes hero-animated-char-out {
-//     // 0% {
-//     //     opacity: 1;
-//     //     transform: translateY(0);
-//     // }
-
-//     // 100% {
-//     //     opacity: 0;
-//     //     transform: translateY(0) scale(0);
-//     // }
-//     // Scrolling
-//   0% {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-
-//     15% {
-//         transform: translateY(5%);
-//     }
-
-//   100% {
-//     opacity: 0;
-//     transform: translateY(-40%);
-//   }
-// }
-
-
-
-// @keyframes hero-animated-char-in {
-//     // 0% {
-//     //     opacity: 0;
-//     //     transform: scale(0);
-//     // }
-
-//     // 100% {
-//     //     opacity: 1;
-//     //     transform: scale(1);
-//     // }
-
-//     // Scrolling
-//   0% {
-//     opacity: 0;
-//     transform: translateY(40%);
-//   }
-
-//   85% {
-//     transform: translateY(-5%);
-//   }
-
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }
 
 // Root Variables
 :root {
@@ -152,6 +98,7 @@ button {
   --duration-fast: 150ms;      // Quick micro-interactions
   --duration-normal: 250ms;    // Standard transitions
   --duration-slow: 350ms;      // More pronounced animations
+  --duration-slower: 450ms;      // More pronounced animations
 }
 
 // Breakpoints
@@ -187,7 +134,7 @@ button {
 // Components
 
 .card {
-    border: 1px solid var(--primary-color);
+    // border: 1px solid var(--primary-color);
     border-radius: var(--space-sm);
     padding: var(--space-md);
     box-shadow: var(--shadow-md);
@@ -238,7 +185,7 @@ button {
         letter-spacing: var(--tracking-tight);
         grid-column: 1 / -1;
         margin-bottom: 5vh;
-        // text-align: right;
+        column-span: 2;
 
         i {
             font-size: var(--font-3xl);
@@ -251,7 +198,7 @@ button {
             display: inline-block;
             animation-fill-mode: forwards;
             animation-timing-function: ease-in-out;
-            animation-duration: 0.25s;
+            animation-duration: 0.3s;
             animation-iteration-count: 1;
             color: var(--primary-color) !important;
     
@@ -264,12 +211,10 @@ button {
 
         &-in {
             opacity: 0; 
-            // transform: translateY(100%);
         }
 
         &-out {
             opacity: 1;
-            // transform: translateY(0);
         }
     }
 
@@ -283,15 +228,13 @@ button {
             line-height: var(--leading-snug);
             letter-spacing: var(--tracking-normal);
             text-align: left;
-            // transform: translateX(100%);
-            // margin-top: 5vh;
     
             .noun,
             .verb {
                 display: block;
                 position: relative;
                 font-weight: bold;
-                // overflow: hidden;
+                margin-left: 5vw;
     
                 div {
                     position: absolute;
@@ -307,61 +250,243 @@ button {
     &-card {
         @include flexin(column, flex-start, stretch);
         flex: 1;
-        max-width: 275px;
+        width: 275px;
         margin-left: var(--space-lg);
         overflow: hidden;
+        perspective: 100px;
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease-in-out;
+        transform-origin: center center;
+        backface-visibility: visible;
+        // transform: rotate3d(1, 0.5, 0, 15deg);
         
         .content {
-            @include flexin(row, center, stretch);
+            display: grid;
+            grid-template-columns: 75px 180px;
+            grid-template-rows: repeat(2, 1fr);
             flex: 1;
             margin-bottom: var(--space-md);
             box-shadow: var(--shadow-md);
             border-radius: var(--space-sm);
-            // height: 200px !important;
+            padding: var(--space-sm);
 
-            &-details {
-                margin: 35px auto 12px 5%;
-                font-size: var(--font-2xl);
-                font-weight: 100;
-                color: var(--text-grey);
+            // .icon {
+            //     @include flexin(row, center, center);
+            //     grid-column: 1 / 2;
+            //     grid-row: 1 / -1;
 
-                span {
-                    animation: blinker 1s forwards;
-                    animation-iteration-count: infinite;
-                }
-            }
+            //     svg {
+            //         width: 100%;
+            //         height: 100%;
+            //         fill: var(--primary-color);
+            //         path {
+            //             fill: var(--primary-color);
+            //         }
+            //     }
+            // }
+
+            // .description {
+            //     @include flexin(column, center, flex-end);
+            //     grid-row: 1 / 2;
+            //     grid-column: 2 / -1;
+
+            //     h3 {
+            //         font-size: var(--font-lg);
+            //         text-align: right;
+
+            //         &[aria-hidden="true"] {
+            //             display: none;
+            //         }
+            //     }
+            // }
+
+            // .used-at {
+            //     @include flexin(row, flex-end, flex-end);
+            //     grid-row: 2 / -1;
+            //     grid-column: 2 / -1;
+
+            //     svg {
+            //         fill: var(--primary-color);
+            //         path {
+            //             fill: var(--primary-color);
+            //         }
+            //     }
+            // }
         }
 
         .button-group {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+            // grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+            grid-template-columns: repeat(4, minmax(45px, 1fr));
             grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
-            gap: 1px;
+            gap: 4px;
 
             button {
                 @include flexin(row, center, center);
+                position: relative;
                 border-radius: 0;
-                border: 1px solid var(--primary-color);
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
                 border-radius: 4px;
                 background-color: var(--secondary-color);
                 height: 45px;
                 width: 100%;
                 transform: translate(0, 0);
-                transition: background-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+                border: none;
+                transition: 
+                    background-color var(--duration-fast) var(--ease-out),
+                    transform var(--duration-fast) var(--ease-out),
+                    border var(--duration-fast) var(--ease-out);
+
+
+                svg {
+                    width: 65% !important;
+                    height: 65% !important;
+                    transition: fill var(--duration-fast) var(--ease-out);
+                }
+
+                &:hover,
+                &:focus,
+                &:active,
+                &[aria-selected="true"] {
+                    
+                    &.currentNoun {
+                        border: 1px solid var(--secondary-color);
+                    }
+
+                    svg#AWS {
+                        fill: var(--secondary-color) !important;
+                        g,
+                        path {
+                            fill: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#Docker {
+                        fill: var(--secondary-color) !important;
+                        rect {
+                            fill: transparent !important;
+                            stroke: transparent !important;
+                        }
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#DynamoDB {
+                        rect {
+                            fill: transparent !important;
+                            stroke: transparent !important;
+                        }
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#ElasticSearch {
+                        g,
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#GCP {
+                        fill: var(--secondary-color) !important;
+                        g,
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#Grafana {
+                        fill: var(--secondary-color) !important;
+                        g,
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#GraphQL {
+                        fill: var(--secondary-color) !important;
+                        g,
+                        rect,
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#Kafka {
+                        fill: var(--secondary-color) !important;
+                        g,
+                        rect,
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#MySQL {
+                        path {
+                            fill: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#Node-js {
+                        path {
+                            fill: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#React {
+                        g {
+                            stroke: var(--secondary-color) !important;
+                        }
+
+                        circle {
+                            fill: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#Redis {
+                        g,
+                        path {
+                            fill: var(--secondary-color) !important;
+                            stroke: var(--primary-color) !important;
+                        }
+                    }
+                    svg#Ruby-on-Rails {
+                        path {
+                            fill: var(--secondary-color) !important;
+                        }
+                    }
+                    svg#Rust {
+                        path {
+                            fill: var(--secondary-color) !important;
+                        }
+                    }
+
+                    svg#TypeScript {
+                        fill: red !important;   
+                        path {
+                            fill: var(--secondary-color) !important;
+                        }
+                        rect {
+                            fill:transparent !important;
+                        }
+                    }
+                }
 
                 &:hover,
                 &:focus {
                     background-color: var(--primary-color-hover);
                     transform: translate(-1.75px, -1.75px);
+                    transform: scale(1.025);
                 }
 
                 &:active {
-                    background-color: var(--primary-color);
-                    transform: translate(-3.5px, -3.5px);
+                    transform: scale(0.925);
                 }
-                
-                &:active {
+
+                &[aria-selected="true"] {
                     background-color: var(--primary-color);
+                }
+
+                &.currentNoun {
+                    border: 1px solid var(--primary-color);
                 }
             }
         }
