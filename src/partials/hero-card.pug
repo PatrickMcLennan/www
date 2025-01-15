@@ -72,6 +72,7 @@ mixin includeTech(tech)
         each tech in technologies
             button(
                 role="tab" 
+                aria-label=tech
                 aria-selected="false" 
                 aria-controls="content-1"
                 id=tech
